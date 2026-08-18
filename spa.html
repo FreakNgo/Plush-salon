@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plush Salon & Spa — Rajarampuri, Kolhapur</title>
+<meta name="description" content="Plush Salon & Spa — प्लस सैलून & स्पा. Hair, skin, bridal & spa care in Rajarampuri, Kolhapur. Rated 4.1 by 39 guests.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c0d15;
+    --velvet:#3d0f28;
+    --wine:#7c2545;
+    --wine-light:#a3395f;
+    --blush:#f2c9d3;
+    --gold:#c9a15a;
+    --gold-soft:#e6cd9a;
+    --ivory:#f7efe8;
+    --ivory-dim:#d9c6ca;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  ::selection{background:var(--gold);color:var(--ink);}
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:450;
+    letter-spacing:-0.01em;
+  }
+
+  .devanagari{ font-family:'Noto Sans Devanagari',sans-serif; }
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- grain + ambient bg ---------- */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:60;
+    opacity:.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    padding:26px 0;
+    transition:padding .5s var(--ease), background .5s var(--ease), border-color .5s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:14px 0;
+    background:rgba(28,13,21,.82);
+    backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid rgba(201,161,90,.18);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{display:flex; align-items:baseline; gap:10px;}
+  .brand-mark{font-family:'Fraunces',serif; font-size:22px; font-style:italic; font-weight:450; color:var(--ivory);}
+  .brand-mark em{color:var(--gold); font-style:italic;}
+  .navlinks{display:flex; gap:36px; font-size:14px; letter-spacing:.03em;}
+  .navlinks a{position:relative; padding:4px 0; color:var(--ivory-dim); transition:color .3s;}
+  .navlinks a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background:var(--gold); transition:width .4s var(--ease);
+  }
+  .navlinks a:hover{color:var(--ivory);}
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{
+    border:1px solid rgba(201,161,90,.5); padding:9px 20px; border-radius:999px;
+    font-size:13px; letter-spacing:.03em; transition:all .35s var(--ease);
+  }
+  .nav-cta:hover{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+  .navlinks-mobile-hide{display:flex;}
+  @media(max-width:760px){ .navlinks{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    padding-top:120px; padding-bottom:80px;
+    overflow:hidden;
+  }
+  .silk{
+    position:absolute; border-radius:50%; filter:blur(70px);
+    opacity:.55; pointer-events:none;
+  }
+  .silk-1{ width:520px; height:520px; top:-140px; left:-120px;
+    background:radial-gradient(circle at 30% 30%, var(--wine-light), transparent 70%);
+    animation:drift1 22s ease-in-out infinite;
+  }
+  .silk-2{ width:460px; height:460px; bottom:-160px; right:-100px;
+    background:radial-gradient(circle at 60% 40%, var(--gold-soft), transparent 70%);
+    opacity:.25;
+    animation:drift2 26s ease-in-out infinite;
+  }
+  .silk-3{ width:340px; height:340px; top:30%; right:10%;
+    background:radial-gradient(circle, var(--blush), transparent 70%);
+    opacity:.18;
+    animation:drift3 18s ease-in-out infinite;
+  }
+  @keyframes drift1{ 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,40px)} }
+  @keyframes drift2{ 0%,100%{transform:translate(0,0)} 50%{transform:translate(-50px,-30px)} }
+  @keyframes drift3{ 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,50px) scale(1.15)} }
+
+  .hero-inner{position:relative; z-index:2; width:100%;}
+  .eyebrow{
+    display:flex; align-items:center; gap:12px;
+    font-size:12.5px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold-soft); margin-bottom:28px;
+    opacity:0; animation:rise .9s var(--ease) .1s forwards;
+  }
+  .eyebrow .line{width:34px; height:1px; background:var(--gold);}
+
+  .hero h1{
+    font-size:clamp(48px,8vw,104px);
+    line-height:.98;
+    color:var(--ivory);
+    opacity:0; animation:rise 1s var(--ease) .25s forwards;
+  }
+  .hero h1 .it{ font-style:italic; color:var(--blush); }
+  .hero .hi-sub{
+    display:block; margin-top:10px;
+    font-size:clamp(18px,2.6vw,26px);
+    color:var(--ivory-dim); font-weight:400;
+    opacity:0; animation:rise 1s var(--ease) .4s forwards;
+  }
+
+  .hero-tagline{
+    max-width:480px; margin-top:28px; font-size:16.5px; line-height:1.7;
+    color:var(--ivory-dim);
+    opacity:0; animation:rise 1s var(--ease) .55s forwards;
+  }
+
+  .hero-actions{
+    display:flex; gap:16px; margin-top:40px; flex-wrap:wrap; align-items:center;
+    opacity:0; animation:rise 1s var(--ease) .7s forwards;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:15px 30px; border-radius:999px; font-size:14.5px; letter-spacing:.02em;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
+  .btn-gold:hover{ transform:translateY(-3px); box-shadow:0 14px 30px -10px rgba(201,161,90,.55); }
+  .btn-ghost{ border:1px solid rgba(247,239,232,.3); color:var(--ivory); }
+  .btn-ghost:hover{ background:rgba(247,239,232,.08); transform:translateY(-3px); }
+
+  @keyframes rise{ from{opacity:0; transform:translateY(22px);} to{opacity:1; transform:translateY(0);} }
+
+  .status-chip{
+    display:inline-flex; align-items:center; gap:8px; margin-top:44px;
+    font-size:13px; color:var(--ivory-dim);
+    opacity:0; animation:rise 1s var(--ease) .85s forwards;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:#7ddba0; box-shadow:0 0 0 4px rgba(125,219,160,.18);}
+
+  /* floating rating badge */
+  .rating-float{
+    position:absolute; right:0; top:130px; z-index:3;
+    width:180px; text-align:center;
+    padding:26px 18px 22px;
+    border:1px solid rgba(201,161,90,.35);
+    border-radius:18px;
+    background:rgba(61,15,40,.35);
+    backdrop-filter:blur(10px);
+    opacity:0; animation:rise 1s var(--ease) 1s forwards;
+  }
+  .rating-float .num{ font-family:'Fraunces',serif; font-size:40px; color:var(--gold); }
+  .stars{ display:flex; justify-content:center; gap:3px; margin:8px 0; }
+  .stars svg{ width:14px; height:14px; }
+  .rating-float .cnt{ font-size:11.5px; color:var(--ivory-dim); letter-spacing:.03em; }
+  @media(max-width:900px){ .rating-float{ position:static; margin-top:36px; width:fit-content; } }
+
+  /* ---------- section shell ---------- */
+  section{ position:relative; padding:120px 0; }
+  .section-alt{ background:linear-gradient(180deg, var(--velvet), var(--ink) 85%); }
+  .kicker{
+    display:flex; align-items:center; gap:12px;
+    font-size:12.5px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold-soft); margin-bottom:18px;
+  }
+  .kicker .line{ width:34px; height:1px; background:var(--gold); }
+  .section-title{ font-size:clamp(32px,4.4vw,52px); max-width:640px; }
+  .section-title .it{ font-style:italic; color:var(--gold-soft); }
+
+  .reveal{ opacity:0; transform:translateY(34px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:70px; align-items:start; margin-top:56px;
+  }
+  .about-grid p{ font-size:16.5px; line-height:1.85; color:var(--ivory-dim); margin-bottom:18px; }
+  .about-stats{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(201,161,90,.2); border-radius:16px; overflow:hidden; }
+  .about-stats div{ background:var(--ink); padding:28px 24px; }
+  .about-stats .n{ font-family:'Fraunces',serif; font-size:34px; color:var(--gold); display:block; }
+  .about-stats .l{ font-size:12.5px; color:var(--ivory-dim); letter-spacing:.03em; margin-top:6px; display:block; }
+  @media(max-width:820px){ .about-grid{ grid-template-columns:1fr; gap:40px; } }
+
+  /* ---------- services ---------- */
+  .svc-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:rgba(201,161,90,.18); border:1px solid rgba(201,161,90,.18);
+    border-radius:20px; overflow:hidden; margin-top:56px;
+  }
+  .svc-card{
+    background:var(--ink); padding:38px 30px; position:relative; overflow:hidden;
+    transition:background .4s var(--ease);
+  }
+  .svc-card::before{
+    content:''; position:absolute; inset:0; opacity:0;
+    background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(201,161,90,.13), transparent 60%);
+    transition:opacity .4s;
+  }
+  .svc-card:hover::before{ opacity:1; }
+  .svc-card:hover{ background:#25101c; }
+  .svc-icon{ width:38px; height:38px; margin-bottom:22px; color:var(--gold); }
+  .svc-card h3{ font-size:21px; font-weight:450; margin-bottom:10px; }
+  .svc-card p{ font-size:14px; color:var(--ivory-dim); line-height:1.65; }
+  .svc-num{ position:absolute; top:24px; right:28px; font-family:'Fraunces',serif; font-style:italic; font-size:13px; color:rgba(247,239,232,.28); }
+  @media(max-width:900px){ .svc-grid{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:600px){ .svc-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- rating / bloom ---------- */
+  .rate-wrap{
+    display:grid; grid-template-columns:.85fr 1.15fr; gap:70px; align-items:center; margin-top:56px;
+  }
+  .bloom-box{ display:flex; justify-content:center; }
+  .bloom{ position:relative; width:260px; height:260px; }
+  .petal{
+    position:absolute; width:130px; height:64px; left:50%; top:50%;
+    background:linear-gradient(135deg, var(--wine-light), var(--wine));
+    border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+    transform-origin:0% 50%;
+    opacity:0; transform:translate(0,-50%) scale(.2);
+    transition:opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .bloom.in .petal{ opacity:.85; transform:translate(0,-50%) scale(1) rotate(var(--rot));}
+  .bloom-center{
+    position:absolute; left:50%; top:50%; width:70px; height:70px; margin:-35px;
+    border-radius:50%; background:radial-gradient(circle at 35% 30%, var(--gold-soft), var(--gold) 70%);
+    display:flex; align-items:center; justify-content:center; z-index:3;
+    box-shadow:0 0 40px rgba(201,161,90,.4);
+  }
+  .bloom-center span{ font-family:'Fraunces',serif; font-size:26px; color:var(--ink); font-weight:600; }
+
+  .rate-copy .big-num{ font-family:'Fraunces',serif; font-size:clamp(56px,7vw,88px); color:var(--ivory); line-height:1; }
+  .rate-copy .big-num .of5{ font-size:.4em; color:var(--ivory-dim); font-family:'Inter',sans-serif; }
+  .rate-copy .stars-lg{ display:flex; gap:6px; margin:18px 0 22px; }
+  .rate-copy .stars-lg svg{ width:24px; height:24px; }
+  .rate-copy p{ font-size:15.5px; color:var(--ivory-dim); max-width:420px; line-height:1.75; }
+  @media(max-width:820px){ .rate-wrap{ grid-template-columns:1fr; } }
+
+  /* star fill */
+  .star-fill-bg{ fill:rgba(247,239,232,.15); }
+  .star-fill-fg{ fill:var(--gold); }
+  .star-clip-rect{ transform:scaleX(0); transform-origin:left; transition:transform 1.4s var(--ease) .3s; }
+  .bloom.in ~ .rate-copy .star-clip-rect, .stars-lg.in .star-clip-rect{ transform:scaleX(1); }
+
+  /* ---------- visit ---------- */
+  .visit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-top:56px;
+    background:rgba(201,161,90,.18); border:1px solid rgba(201,161,90,.18); border-radius:20px; overflow:hidden;
+  }
+  .visit-card{ background:var(--ink); padding:44px; }
+  .visit-card h3{ font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:18px; }
+  .visit-line{ display:flex; gap:14px; align-items:flex-start; margin-bottom:20px; font-size:15.5px; color:var(--ivory-dim); line-height:1.6; }
+  .visit-line svg{ width:19px; height:19px; flex-shrink:0; margin-top:2px; color:var(--gold); }
+  .visit-line a:hover{ color:var(--ivory); }
+  .map-embed{ width:100%; height:100%; min-height:340px; border:0; filter:grayscale(.3) sepia(.15); }
+  @media(max-width:820px){ .visit-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- footer ---------- */
+  footer{ padding:60px 0 40px; border-top:1px solid rgba(201,161,90,.16); }
+  .foot-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .foot-row .brand-mark{ font-size:19px; }
+  footer .fine{ font-size:12.5px; color:var(--ivory-dim); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  }
+
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <div class="brand">
+      <span class="brand-mark">Plush <em>Salon</em> &amp; Spa</span>
+    </div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#reviews">Rating</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a class="nav-cta" href="tel:07058611151">070586 11151</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="silk silk-1"></div>
+  <div class="silk silk-2"></div>
+  <div class="silk silk-3"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><span class="line"></span> Rajarampuri &middot; Kolhapur</div>
+    <h1>
+      <span class="it">Plush</span> Salon &amp; Spa
+      <span class="hi-sub devanagari">प्लस सैलून &amp; स्पा</span>
+    </h1>
+    <p class="hero-tagline">A quiet corner of Mahalaxminagar for hair, skin and bridal care — unhurried service, considered detail, and a chair worth settling into.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="tel:07058611151">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call to Book
+      </a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Plush+Salon+%26+Spa%2C+Siddhachal+Tower%2C+5th+Ln%2C+Rajarampuri%2C+Kolhapur" target="_blank" rel="noopener">
+        Get Directions
+      </a>
+    </div>
+    <div class="status-chip"><span class="dot"></span> Open now &middot; Closes 9 pm</div>
+  </div>
+
+  <div class="rating-float">
+    <div class="num">4.1</div>
+    <div class="stars" id="floatStars"></div>
+    <div class="cnt">39 Google reviews</div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="kicker"><span class="line"></span> About the salon</div>
+    <h2 class="section-title reveal">Care that follows <span class="it">Kolhapur's</span> own unhurried rhythm.</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>Tucked into Siddhachal Tower on 5th Lane, Plush Salon &amp; Spa has become a familiar stop in Mahalaxminagar for guests who want their hair, skin and bridal prep handled with a steady hand.</p>
+        <p>The studio keeps its focus narrow on purpose — hair, skin, spa and bridal — so every visit gets full attention rather than a rushed slot on a long menu.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div><span class="n">4.1</span><span class="l">Average rating</span></div>
+        <div><span class="n">39</span><span class="l">Google reviews</span></div>
+        <div><span class="n">E Ward</span><span class="l">Rajarampuri, Kolhapur</span></div>
+        <div><span class="n">9 PM</span><span class="l">Daily closing time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section-alt">
+  <div class="wrap">
+    <div class="kicker"><span class="line"></span> What's offered</div>
+    <h2 class="section-title reveal">Five reasons guests <span class="it">walk in.</span></h2>
+
+    <div class="svc-grid reveal">
+      <div class="svc-card" data-tilt>
+        <span class="svc-num">01</span>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3v18M6 3c4 0 4 4 8 4M6 12c4 0 4 4 8 4"/><circle cx="18" cy="7" r="2.2"/><circle cx="18" cy="16" r="2.2"/></svg>
+        <h3>Hair Styling &amp; Care</h3>
+        <p>Cuts, colour, smoothing and treatments shaped around how your hair actually behaves day to day.</p>
+      </div>
+      <div class="svc-card" data-tilt>
+        <span class="svc-num">02</span>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/></svg>
+        <h3>Skin &amp; Facial</h3>
+        <p>Cleansing, brightening and de-tan facials suited to Kolhapur's weather and your skin type.</p>
+      </div>
+      <div class="svc-card" data-tilt>
+        <span class="svc-num">03</span>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-9.5-8.5C0.7 8.6 2.6 5 6.2 5c2 0 3.3 1 5.8 3 2.5-2 3.8-3 5.8-3 3.6 0 5.5 3.6 3.7 7.5C19 16.65 12 21 12 21z"/></svg>
+        <h3>Bridal Packages</h3>
+        <p>Trial-led bridal makeup and draping, planned well ahead so the big day runs calm.</p>
+      </div>
+      <div class="svc-card" data-tilt>
+        <span class="svc-num">04</span>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-2 3-6 5-6 10a6 6 0 0 0 12 0c0-5-4-7-6-10z"/></svg>
+        <h3>Spa &amp; Massage</h3>
+        <p>Head, shoulder and full-body therapies meant to slow you down for an hour or two.</p>
+      </div>
+      <div class="svc-card" data-tilt>
+        <span class="svc-num">05</span>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 21c-2-3-2-9 5-9s7 6 5 9"/><path d="M9 4c0 3 1.5 5 3 5s3-2 3-5"/></svg>
+        <h3>Nails &amp; Makeup</h3>
+        <p>Manicures, pedicures and party makeup for the evenings that need a quick turnaround.</p>
+      </div>
+      <div class="svc-card" data-tilt>
+        <span class="svc-num">06</span>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19h16M4 15h16M6 15V7a6 6 0 0 1 12 0v8"/></svg>
+        <h3>Waxing &amp; Threading</h3>
+        <p>Precise, low-fuss grooming for guests popping in between appointments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="kicker"><span class="line"></span> On Google</div>
+    <h2 class="section-title reveal">Rated <span class="it">4.1</span> by the neighbourhood.</h2>
+
+    <div class="rate-wrap">
+      <div class="bloom-box reveal">
+        <div class="bloom" id="bloom">
+          <div class="petal" style="--rot:0deg"></div>
+          <div class="petal" style="--rot:60deg"></div>
+          <div class="petal" style="--rot:120deg"></div>
+          <div class="petal" style="--rot:180deg"></div>
+          <div class="petal" style="--rot:240deg"></div>
+          <div class="petal" style="--rot:300deg"></div>
+          <div class="bloom-center"><span>4.1</span></div>
+        </div>
+      </div>
+      <div class="rate-copy reveal">
+        <div class="big-num">4.1<span class="of5">&nbsp;/ 5</span></div>
+        <div class="stars-lg" id="bigStars"></div>
+        <p>Based on 39 reviews on Google, guests come back most often for the hair and bridal work. Ratings and review count reflect the salon's public Google Business listing at time of writing — always worth a fresh check before you book.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit" class="section-alt">
+  <div class="wrap">
+    <div class="kicker"><span class="line"></span> Find the salon</div>
+    <h2 class="section-title reveal">Come as you are, <span class="it">we'll take it from there.</span></h2>
+
+    <div class="visit-grid reveal">
+      <div class="visit-card">
+        <h3>Contact &amp; Hours</h3>
+        <div class="visit-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>&ldquo;Siddhachal&rdquo; Tower, 1746, 5th Ln, E Ward, Mahalaxminagar, Rajarampuri, Kolhapur, Maharashtra 416008</span>
+        </div>
+        <div class="visit-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span>Open today &middot; Closes 9 PM</span>
+        </div>
+        <div class="visit-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:07058611151">070586 11151</a>
+        </div>
+        <div class="visit-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Plus Code: M6WR+5V Kolhapur, Maharashtra</span>
+        </div>
+        <div class="visit-line" style="margin-top:28px;">
+          <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&query=Plush+Salon+%26+Spa%2C+Siddhachal+Tower%2C+5th+Ln%2C+Rajarampuri%2C+Kolhapur" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+      <iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Plush+Salon+%26+Spa,+Siddhachal+Tower,+5th+Ln,+Rajarampuri,+Kolhapur&output=embed">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span class="brand-mark">Plush <em>Salon</em> &amp; Spa</span>
+    <span class="fine">Mahalaxminagar, Rajarampuri, Kolhapur &middot; 070586 11151</span>
+    <span class="fine">Unofficial site &middot; built from public listing details</span>
+  </div>
+</footer>
+
+<script>
+  // header shrink
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.18});
+  revealEls.forEach(el => io.observe(el));
+
+  // bloom trigger
+  const bloom = document.getElementById('bloom');
+  const io2 = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) bloom.classList.add('in'); });
+  }, {threshold:.4});
+  io2.observe(bloom);
+
+  // star builder — 4.1 / 5, gold sweep fill
+  function buildStars(container, rating, size){
+    container.innerHTML = '';
+    for(let i=0;i<5;i++){
+      const pct = Math.max(0, Math.min(1, rating - i)) * 100;
+      const id = 'clip-' + Math.random().toString(36).slice(2,9);
+      const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('viewBox','0 0 24 24');
+      svg.innerHTML = `
+        <defs><clipPath id="${id}"><rect class="star-clip-rect" x="0" y="0" width="${pct}%" height="24"/></clipPath></defs>
+        <path class="star-fill-bg" d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        <path class="star-fill-fg" clip-path="url(#${id})" d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      `;
+      container.appendChild(svg);
+    }
+  }
+  buildStars(document.getElementById('floatStars'), 4.1);
+  buildStars(document.getElementById('bigStars'), 4.1);
+
+  // trigger the big star fill animation on view
+  const bigStars = document.getElementById('bigStars');
+  const io3 = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.5});
+  io3.observe(bigStars);
+
+  // subtle card tilt / spotlight follow
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+</script>
+
+</body>
+</html>
